@@ -5,22 +5,6 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Test
-    task:
-      jobs:
-        - name: go test
-          commands:
-            - sem-service start postgres
-            - sem-version go 1.16
-            - export GO111MODULE=on
-            - export GOPATH=~/go
-            - 'export PATH=/home/semaphore/go/bin:$PATH'
-            - checkout
-            - go get ./...
-            - source env-test
-            - go test ./...
-            - go build -v .
-    dependencies: []
   - name: Download
     dependencies: []
     task:
