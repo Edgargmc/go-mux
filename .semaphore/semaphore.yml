@@ -5,26 +5,41 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Install
+  - name: Test
     task:
       jobs:
-        - name: Download Modules
+        - name: go test
           commands:
+            - sem-service start postgres
             - sem-version go 1.16
+            - export GO111MODULE=on
+            - export GOPATH=~/go
+            - 'export PATH=/home/semaphore/go/bin:$PATH'
             - checkout
-            - cache restore
-            - go mod vendor
-            - cache store
-      agent:
-        machine:
-          type: e1-standard-2
-          os_image: ubuntu1804
+            - go get ./...
+            - source env-test
+            - go test ./...
+            - go build -v .
+    dependencies: []
+  - name: Download
+    dependencies: []
+    task:
       env_vars:
         - name: GO111MODULE
           value: 'on'
         - name: GOFLAGS
-          value: '-mod-vendor'
-  - name: Test
+          value: '-mod=vendor'
+      jobs:
+        - name: go get
+          commands:
+            - sem-version go 1.16
+            - checkout
+            - 'cache restore '
+            - go mod vendor
+            - cache store
+  - name: Tests
+    dependencies:
+      - Download
     task:
       env_vars:
         - name: GO111MODULE
@@ -44,11 +59,13 @@ blocks:
           commands:
             - go test ./...
   - name: Build
+    dependencies:
+      - Tests
     task:
       env_vars:
         - name: GO111MODULE
           value: 'on'
-        - name: GOFLAGS
+        - name: GOFLAG
           value: '-mod=vendor'
       prologue:
         commands:
