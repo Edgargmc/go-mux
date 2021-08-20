@@ -65,6 +65,7 @@ func (app *App) getProduct(w http.ResponseWriter, r *http.Request) {
 	respondWithJSON(w, http.StatusOK, p)
 }
 
+
 func (app *App) getProducts(w http.ResponseWriter, r *http.Request) {
 	count, _ := strconv.Atoi(r.FormValue("count"))
 	start, _ := strconv.Atoi(r.FormValue("start"))
