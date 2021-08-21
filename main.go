@@ -14,7 +14,7 @@ func main() {
 		os.Getenv("APP_DB_PASSWORD"),
 		os.Getenv("APP_DB_NAME"),
 	)
-	app.Run(os.Getenv("APP_PORT"))
+	app.Run(":" + os.Getenv("PORT"))
 }
 
 func getEnv(key string, defaultVal string) string {
