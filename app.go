@@ -29,11 +29,13 @@ func (app *App) Initialize(host string, port int, user, password, dbname string)
 	app.initializeRoutes()
 }
 
-func (app *App) Run(address string) {
+func (app *App) Run(port string) {
+	address := ":" + port
 	log.Fatal(http.ListenAndServe(address, app.Router))
 }
 
 func (app *App) initializeRoutes() {
+	app.Router.HandleFunc("/", app.home).Methods("GET")
 	app.Router.HandleFunc("/products", app.getProducts).Methods("GET")
 	app.Router.HandleFunc("/product", app.createProduct).Methods("POST")
 	app.Router.HandleFunc("/product/{id:[0-9]+}", app.getProduct).Methods("GET")
@@ -42,6 +44,9 @@ func (app *App) initializeRoutes() {
 
 }
 
+func (app *App) home(w http.ResponseWriter, r *http.Request) {
+	_, _ = w.Write([]byte("Ok"))
+}
 
 func (app *App) getProduct(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)

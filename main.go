@@ -5,6 +5,9 @@ import (
 	"strconv"
 )
 
+
+const defaultPort = "8080"
+
 func main() {
 	app := App{}
 	app.Initialize(
@@ -14,7 +17,15 @@ func main() {
 		os.Getenv("APP_DB_PASSWORD"),
 		os.Getenv("APP_DB_NAME"),
 	)
-	app.Run(":" + os.Getenv("PORT"))
+	app.Run(os.Getenv(getServerPort()))
+}
+
+func getServerPort() string {
+	serverPort := os.Getenv("PORT")
+	if serverPort == "" {
+		serverPort = defaultPort
+	}
+	return serverPort
 }
 
 func getEnv(key string, defaultVal string) string {
