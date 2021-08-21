@@ -11,9 +11,5 @@ func main() {
 		os.Getenv("APP_DB_PASSWORD"),
 		os.Getenv("APP_DB_NAME"),
 	)
-	app.Run(":8010")
+	app.Run(":8080")
 }
-
-//postgres
-//edgargmc
-//store
