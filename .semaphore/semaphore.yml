@@ -30,12 +30,6 @@ blocks:
           value: 'on'
         - name: GOFLAGS
           value: '-mod=vendor'
-        - name: APP_DB_USERNAME_DEV
-          value: postgres
-        - name: APP_DB_PASSWORD_DEV
-          value: edgargmc
-        - name: APP_DB_NAME_DEV
-          value: store
       prologue:
         commands:
           - sem-version go 1.16
