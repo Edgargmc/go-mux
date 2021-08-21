@@ -17,7 +17,7 @@ func main() {
 		os.Getenv("APP_DB_PASSWORD"),
 		os.Getenv("APP_DB_NAME"),
 	)
-	app.Run(os.Getenv(getServerPort()))
+	app.Run(getServerPort())
 }
 
 func getServerPort() string {
