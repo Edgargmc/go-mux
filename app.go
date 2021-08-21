@@ -17,7 +17,7 @@ type App struct {
 }
 
 func (app *App) Initialize(host string, port int, user, password, dbname string) {
-	connectionString := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
+	connectionString := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s", host, port, user, password, dbname)
 
 	var err error
 	app.DB, err = sql.Open("postgres", connectionString)
