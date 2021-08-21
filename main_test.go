@@ -15,9 +15,10 @@ var a App
 
 func TestMain(m *testing.M) {
 	a.Initialize(
-		"postgres",
-		"edgargmc",
-		"postgres")
+		os.Getenv("APP_DB_USERNAME_DEV"),
+		os.Getenv("APP_DB_PASSWORD_DEV"),
+		os.Getenv("APP_DB_NAME_DEV"),
+	)
 
 	ensureTableExist()
 	code := m.Run()
@@ -183,4 +184,3 @@ const tableCreationQuery = `CREATE TABLE IF NOT EXISTS products (
     price NUMERIC(10,2) NOT NULL DEFAULT 0.00,
     CONSTRAINT products_pkey PRIMARY KEY (id)
 )`
-
