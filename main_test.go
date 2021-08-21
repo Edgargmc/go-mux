@@ -15,9 +15,9 @@ var a App
 
 func TestMain(m *testing.M) {
 	a.Initialize(
-		os.Getenv("APP_DB_USERNAME_DEV"),
-		os.Getenv("APP_DB_PASSWORD_DEV"),
-		os.Getenv("APP_DB_NAME_DEV"),
+		os.Getenv("APP_DB_USERNAME"),
+		os.Getenv("APP_DB_PASSWORD"),
+		os.Getenv("APP_DB_NAME"),
 	)
 
 	ensureTableExist()

@@ -29,9 +29,8 @@ func (app *App) Initialize(user, password, dbname string) {
 	app.initializeRoutes()
 }
 
-func (app *App) Run(address string){
-	log.Fatal(http.ListenAndServe(":8010", app.Router))
-
+func (app *App) Run(address string) {
+	log.Fatal(http.ListenAndServe(address, app.Router))
 }
 
 func (app *App) initializeRoutes() {
@@ -64,7 +63,6 @@ func (app *App) getProduct(w http.ResponseWriter, r *http.Request) {
 	}
 	respondWithJSON(w, http.StatusOK, p)
 }
-
 
 func (app *App) getProducts(w http.ResponseWriter, r *http.Request) {
 	count, _ := strconv.Atoi(r.FormValue("count"))
@@ -115,7 +113,7 @@ func (app *App) updateProduct(w http.ResponseWriter, r *http.Request) {
 		respondWithError(w, http.StatusBadRequest, "Invalid request payload")
 		return
 	}
-	 defer r.Body.Close()
+	defer r.Body.Close()
 	p.ID = id
 
 	if err := p.updateProduct(app.DB); err != nil {
