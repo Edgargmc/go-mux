@@ -1,6 +1,8 @@
-export APP_DB_USERNAME=postgres
-export APP_DB_PASSWORD=
-export APP_DB_NAME=postgres
+export APP_DB_HOST=ec2-52-3-130-181.compute-1.amazonaws.com
+export APP_DB_PORT=5432
+export APP_DB_USERNAME=evriateumotirq
+export APP_DB_PASSWORD=fb0dc8b6273e6e6c67a7cbd041bf7c661aa0584ac155b55a1dcec462854a8b2e
+export APP_DB_NAME=d79v8ci2rnile9
 
 export TEST_DB_USERNAME=$APP_DB_USERNAME
 export TEST_DB_PASSWORD=$APP_DB_PASSWORD

@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/store</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="heroku-api-store" uuid="b3a51296-f141-4b4d-94b0-6ad71915689d">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-52-3-130-181.compute-1.amazonaws.com/d79v8ci2rnile9?ssl=true&amp;sslmode=require</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
