@@ -5,9 +5,9 @@ import "os"
 func main() {
 	app := App{}
 	app.Initialize(
-		os.Getenv("APP_DB_USERNAME_PROD"),
-		os.Getenv("APP_DB_PASSWORD_PROD"),
-		os.Getenv("APP_DB_NAME_PROD"),
+		os.Getenv("APP_DB_USERNAME"),
+		os.Getenv("APP_DB_PASSWORD"),
+		os.Getenv("APP_DB_NAME"),
 	)
 	app.Run(":8010")
 }
